@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaboration Dashboard - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #F7F7F7;
+      padding: 40px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      color: white;
+      padding: 32px;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 0;
+    }
+    .team-panel {
+      padding: 32px;
+      border-right: 1px solid #E7E0EC;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1C1B1F;
+    }
+    .btn {
+      background: #6D4AFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: #8B7FFF;
+    }
+    .team-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .team-member {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: #F7F7F7;
+      border: 1px solid #E7E0EC;
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+    .team-member:hover {
+      border-color: #6D4AFF;
+      background: #F5F4FF;
+    }
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .avatar.online::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 14px;
+      height: 14px;
+      background: #34C759;
+      border: 3px solid white;
+      border-radius: 50%;
+    }
+    .member-info {
+      flex: 1;
+    }
+    .member-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+    }
+    .member-role {
+      font-size: 14px;
+      color: #79747E;
+      margin-bottom: 6px;
+    }
+    .role-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .role-badge.owner {
+      background: #FFE5E5;
+      color: #FF3B30;
+    }
+    .role-badge.editor {
+      background: #F5F4FF;
+      color: #6D4AFF;
+    }
+    .role-badge.contributor {
+      background: #E8F5E9;
+      color: #34C759;
+    }
+    .role-badge.viewer {
+      background: #F0F0F0;
+      color: #79747E;
+    }
+    .member-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid #E7E0EC;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .icon-btn:hover {
+      border-color: #6D4AFF;
+      color: #6D4AFF;
+    }
+    .activity-panel {
+      padding: 32px;
+      background: #FAFAFA;
+      max-height: 800px;
+      overflow-y: auto;
+    }
+    .activity-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .activity-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      background: white;
+      border: 1px solid #E7E0EC;
+      border-radius: 12px;
+    }
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #F5F4FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .activity-content {
+      flex: 1;
+    }
+    .activity-text {
+      font-size: 14px;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+    }
+    .activity-text strong {
+      font-weight: 600;
+      color: #6D4AFF;
+    }
+    .activity-time {
+      font-size: 12px;
+      color: #79747E;
+    }
+    .permissions-section {
+      margin-top: 40px;
+    }
+    .permissions-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+    .permissions-table th {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 2px solid #E7E0EC;
+      font-size: 13px;
+      font-weight: 600;
+      color: #49454F;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .permissions-table td {
+      padding: 12px;
+      border-bottom: 1px solid #E7E0EC;
+      font-size: 14px;
+      color: #1C1B1F;
+    }
+    .permissions-table tr:last-child td {
+      border-bottom: none;
+    }
+    .check {
+      color: #34C759;
+      font-size: 18px;
+    }
+    .cross {
+      color: #E7E0EC;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Album_2025 - Collaboration</h1>
+      <p>Manage team members and track project activity</p>
+    </div>
+
+    <div class="main">
+      <div class="team-panel">
+        <div class="section-header">
+          <h2 class="section-title">Team Members</h2>
+          <button class="btn">+ Invite Member</button>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="avatar online">JD</div>
+            <div class="member-info">
+              <div class="member-name">John Davis</div>
+              <div class="member-role">john.davis@studio.com</div>
+              <span class="role-badge owner">Owner</span>
+            </div>
+            <div class="member-actions">
+              <div class="icon-btn">✉️</div>
+              <div class="icon-btn">⚙️</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="avatar online">SM</div>
+            <div class="member-info">
+              <div class="member-name">Sarah Martinez</div>
+              <div class="member-role">sarah.m@producer.com</div>
+              <span class="role-badge editor">Editor</span>
+            </div>
+            <div class="member-actions">
+              <div class="icon-btn">✉️</div>
+              <div class="icon-btn">⚙️</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="avatar">MK</div>
+            <div class="member-info">
+              <div class="member-name">Michael Kim</div>
+              <div class="member-role">m.kim@mixer.com</div>
+              <span class="role-badge contributor">Contributor</span>
+            </div>
+            <div class="member-actions">
+              <div class="icon-btn">✉️</div>
+              <div class="icon-btn">⚙️</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="avatar online">AL</div>
+            <div class="member-info">
+              <div class="member-name">Anna Lopez</div>
+              <div class="member-role">anna@label.com</div>
+              <span class="role-badge viewer">Viewer</span>
+            </div>
+            <div class="member-actions">
+              <div class="icon-btn">✉️</div>
+              <div class="icon-btn">⚙️</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="avatar">TC</div>
+            <div class="member-info">
+              <div class="member-name">Tom Chen</div>
+              <div class="member-role">tom.chen@artist.com</div>
+              <span class="role-badge viewer">Viewer</span>
+            </div>
+            <div class="member-actions">
+              <div class="icon-btn">✉️</div>
+              <div class="icon-btn">⚙️</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="permissions-section">
+          <h2 class="section-title">Permission Levels</h2>
+          <table class="permissions-table">
+            <thead>
+              <tr>
+                <th>Permission</th>
+                <th>Owner</th>
+                <th>Editor</th>
+                <th>Contributor</th>
+                <th>Viewer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>View files</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td>Download files</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td>Upload files</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td>Edit metadata</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td>Share with others</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td>Manage members</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td>Delete project</td>
+                <td class="check">✓</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="activity-panel">
+        <h2 class="section-title" style="margin-bottom: 24px;">Recent Activity</h2>
+
+        <div class="activity-feed">
+          <div class="activity-item">
+            <div class="activity-icon">⬆️</div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <strong>Sarah Martinez</strong> uploaded Master_Final_V3.wav
+              </div>
+              <div class="activity-time">2 minutes ago</div>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">💬</div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <strong>Michael Kim</strong> commented on Mix_Revision_2.flac
+              </div>
+              <div class="activity-time">15 minutes ago</div>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">📥</div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <strong>Anna Lopez</strong> downloaded Vocals_Stem.wav
+              </div>
+              <div class="activity-time">1 hour ago</div>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">👤</div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <strong>John Davis</strong> added Tom Chen to the project
+              </div>
+              <div class="activity-time">3 hours ago</div>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">📝</div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <strong>Sarah Martinez</strong> edited metadata for Drums_Stem.wav
+              </div>
+              <div class="activity-time">5 hours ago</div>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">🔗</div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <strong>Michael Kim</strong> created a share link for Demo_Track_01.alac
+              </div>
+              <div class="activity-time">Yesterday</div>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">⬆️</div>
+            <div class="activity-content">
+              <div class="activity-text">
+                <strong>John Davis</strong> uploaded Guitar_Stem.wav
+              </div>
+              <div class="activity-time">2 days ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

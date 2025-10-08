@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storage Dashboard - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #F7F7F7;
+      padding: 40px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .header {
+      margin-bottom: 32px;
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #1C1B1F;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 16px;
+      color: #79747E;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #E7E0EC;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1C1B1F;
+    }
+    .card-icon {
+      font-size: 20px;
+      color: #79747E;
+    }
+    .storage-gauge {
+      grid-column: span 6;
+    }
+    .gauge-container {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 32px auto;
+    }
+    .gauge-bg {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #6D4AFF 0% 25.4%,
+        #E7E0EC 25.4% 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gauge-inner {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .gauge-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+    }
+    .gauge-label {
+      font-size: 14px;
+      color: #79747E;
+    }
+    .gauge-legend {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .legend-text {
+      font-size: 14px;
+      color: #49454F;
+    }
+    .quick-stats {
+      grid-column: span 6;
+    }
+    .stats-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .stat-item {
+      background: #F7F7F7;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: #79747E;
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+    }
+    .stat-detail {
+      font-size: 13px;
+      color: #49454F;
+    }
+    .breakdown-card {
+      grid-column: span 7;
+    }
+    .breakdown-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .breakdown-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .breakdown-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .breakdown-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .breakdown-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+    }
+    .breakdown-bar {
+      height: 8px;
+      background: #E7E0EC;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .breakdown-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+    .breakdown-size {
+      font-size: 16px;
+      font-weight: 600;
+      color: #49454F;
+      font-family: 'JetBrains Mono', monospace;
+      flex-shrink: 0;
+    }
+    .format-card {
+      grid-column: span 5;
+    }
+    .format-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .format-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: #F7F7F7;
+      border-radius: 12px;
+    }
+    .format-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .format-badge {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .format-badge.wav {
+      background: #F5F4FF;
+      color: #6D4AFF;
+    }
+    .format-badge.flac {
+      background: #E8F5E9;
+      color: #34C759;
+    }
+    .format-badge.alac {
+      background: #FFF3E0;
+      color: #FF9500;
+    }
+    .format-badge.aiff {
+      background: #E3F2FD;
+      color: #007AFF;
+    }
+    .format-count {
+      font-size: 14px;
+      color: #79747E;
+    }
+    .format-size {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1C1B1F;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .recent-card {
+      grid-column: span 12;
+    }
+    .recent-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .recent-table th {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 2px solid #E7E0EC;
+      font-size: 13px;
+      font-weight: 600;
+      color: #49454F;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .recent-table td {
+      padding: 16px 12px;
+      border-bottom: 1px solid #E7E0EC;
+      font-size: 14px;
+    }
+    .recent-table tr:hover {
+      background: #F7F7F7;
+    }
+    .file-name-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #1C1B1F;
+      font-weight: 500;
+    }
+    .file-icon-small {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Storage Dashboard</h1>
+      <p>Monitor your audio library and storage usage</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Storage Gauge -->
+      <div class="card storage-gauge">
+        <div class="card-header">
+          <h2 class="card-title">Storage Usage</h2>
+          <span class="card-icon">💾</span>
+        </div>
+
+        <div class="gauge-container">
+          <div class="gauge-bg">
+            <div class="gauge-inner">
+              <div class="gauge-value">127 GB</div>
+              <div class="gauge-label">of 500 GB</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gauge-legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background: #6D4AFF;"></div>
+            <span class="legend-text">Used (25.4%)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #E7E0EC;"></div>
+            <span class="legend-text">Available (74.6%)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="card quick-stats">
+        <div class="card-header">
+          <h2 class="card-title">Quick Stats</h2>
+          <span class="card-icon">📊</span>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Total Tracks</div>
+            <div class="stat-value">847</div>
+            <div class="stat-detail">+12 this week</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-label">Total Albums</div>
+            <div class="stat-value">23</div>
+            <div class="stat-detail">4 in progress</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-label">Average File Size</div>
+            <div class="stat-value">150 MB</div>
+            <div class="stat-detail">Lossless quality</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Storage Breakdown -->
+      <div class="card breakdown-card">
+        <div class="card-header">
+          <h2 class="card-title">Storage Breakdown</h2>
+          <span class="card-icon">📂</span>
+        </div>
+
+        <div class="breakdown-list">
+          <div class="breakdown-item">
+            <div class="breakdown-icon" style="background: #F5F4FF;">🎵</div>
+            <div class="breakdown-info">
+              <div class="breakdown-name">Masters</div>
+              <div class="breakdown-bar">
+                <div class="breakdown-fill" style="width: 67%;"></div>
+              </div>
+            </div>
+            <div class="breakdown-size">85 GB</div>
+          </div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-icon" style="background: #E8F5E9;">🎚️</div>
+            <div class="breakdown-info">
+              <div class="breakdown-name">Stems</div>
+              <div class="breakdown-bar">
+                <div class="breakdown-fill" style="width: 25%;"></div>
+              </div>
+            </div>
+            <div class="breakdown-size">32 GB</div>
+          </div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-icon" style="background: #FFF3E0;">🎧</div>
+            <div class="breakdown-info">
+              <div class="breakdown-name">Demos</div>
+              <div class="breakdown-bar">
+                <div class="breakdown-fill" style="width: 8%;"></div>
+              </div>
+            </div>
+            <div class="breakdown-size">10 GB</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Format Distribution -->
+      <div class="card format-card">
+        <div class="card-header">
+          <h2 class="card-title">Format Distribution</h2>
+          <span class="card-icon">📋</span>
+        </div>
+
+        <div class="format-list">
+          <div class="format-item">
+            <div class="format-left">
+              <span class="format-badge wav">WAV</span>
+              <span class="format-count">542 files</span>
+            </div>
+            <span class="format-size">78 GB</span>
+          </div>
+
+          <div class="format-item">
+            <div class="format-left">
+              <span class="format-badge flac">FLAC</span>
+              <span class="format-count">245 files</span>
+            </div>
+            <span class="format-size">35 GB</span>
+          </div>
+
+          <div class="format-item">
+            <div class="format-left">
+              <span class="format-badge alac">ALAC</span>
+              <span class="format-count">48 files</span>
+            </div>
+            <span class="format-size">12 GB</span>
+          </div>
+
+          <div class="format-item">
+            <div class="format-left">
+              <span class="format-badge aiff">AIFF</span>
+              <span class="format-count">12 files</span>
+            </div>
+            <span class="format-size">2 GB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Uploads -->
+      <div class="card recent-card">
+        <div class="card-header">
+          <h2 class="card-title">Recent Uploads</h2>
+          <span class="card-icon">⬆️</span>
+        </div>
+
+        <table class="recent-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Format</th>
+              <th>Size</th>
+              <th>Uploaded</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="file-name-cell">
+                  <div class="file-icon-small">🎵</div>
+                  <span>Master_Final_V3.wav</span>
+                </div>
+              </td>
+              <td><span class="format-badge wav">WAV</span> 192kHz/24-bit</td>
+              <td style="font-family: 'JetBrains Mono', monospace;">485 MB</td>
+              <td style="color: #79747E;">Today, 2:34 PM</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name-cell">
+                  <div class="file-icon-small">🎵</div>
+                  <span>Mix_Revision_2.flac</span>
+                </div>
+              </td>
+              <td><span class="format-badge flac">FLAC</span> 96kHz/24-bit</td>
+              <td style="font-family: 'JetBrains Mono', monospace;">287 MB</td>
+              <td style="color: #79747E;">Yesterday, 5:12 PM</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name-cell">
+                  <div class="file-icon-small">🎵</div>
+                  <span>Demo_Track_01.alac</span>
+                </div>
+              </td>
+              <td><span class="format-badge alac">ALAC</span> 48kHz/24-bit</td>
+              <td style="font-family: 'JetBrains Mono', monospace;">156 MB</td>
+              <td style="color: #79747E;">2 days ago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

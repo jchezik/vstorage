@@ -1,0 +1,157 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Card from '../components/ui/Card.astro';
+---
+
+<Layout
+  title="Built for Musicians, by Musicians"
+  description="The story of VStorage - Professional lossless audio storage built from the ground up for musicians who refuse to compromise on quality or security."
+>
+  <!-- Page Hero -->
+  <section class="py-3xl bg-gradient-to-b from-white to-gray-100">
+    <div class="container-custom text-center">
+      <h1 class="text-h1 md:text-display text-gray-900 mb-lg">Built for Musicians, by Musicians</h1>
+      <p class="text-body-lg text-gray-700 max-w-3xl mx-auto">
+        The story of VStorage
+      </p>
+    </div>
+  </section>
+
+  <!-- The Story -->
+  <section class="py-4xl bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto space-y-2xl">
+        <div>
+          <h2 class="text-h2 text-gray-900 mb-lg">The Problem:</h2>
+          <p class="text-body-lg text-gray-700">
+            In 2024, a group of audio engineers and producers in Zurich faced a frustrating reality: no cloud storage platform respected the integrity of lossless audio. Services would compress files, limit formats, or bury masters in generic file browsers designed for documents and photos.
+          </p>
+          <p class="text-body-lg text-gray-700 mt-lg">
+            Worse, storing valuable master recordings on US-based cloud services meant placing them under foreign jurisdiction, vulnerable to data requests and surveillance programs. Musicians deserved better.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h2 text-gray-900 mb-lg">The Solution:</h2>
+          <p class="text-body-lg text-gray-700">
+            VStorage was built from the ground up for professional audio. Not adapted, not retrofitted—built specifically for musicians, producers, and audio engineers who refuse to compromise on quality or security.
+          </p>
+          <p class="text-body-lg text-gray-700 mt-lg">
+            We chose Switzerland not for novelty, but for its unparalleled data protection laws. We chose zero-knowledge encryption not as a feature, but as a fundamental architectural requirement. We chose lossless formats not as an option, but as the only acceptable standard.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-h2 text-gray-900 mb-lg">Today:</h2>
+          <p class="text-body-lg text-gray-700">
+            VStorage is designed for independent producers, recording studios, and labels who understand that great music deserves great storage. Built for professionals who demand the highest audio quality, our platform preserves your master recordings, demos, and entire catalogs exactly as created, protected by mathematics and Swiss law.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Values -->
+  <section class="py-4xl bg-gray-100">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">Our Mission</h2>
+          <p class="text-h3 text-gray-700 max-w-3xl mx-auto">
+            Preserve the integrity of professional audio in the cloud era. Every bit, every sample, exactly as recorded.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">Audio Quality First</h3>
+            <p class="text-body text-gray-700">
+              Never compromise on sound. Every format supported at full quality. No transcoding, no resampling, no "good enough." If you recorded it at 192kHz/32-bit, that's exactly how we store it.
+            </p>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">Swiss Precision</h3>
+            <p class="text-body text-gray-700">
+              Security and reliability aren't nice-to-haves—they're requirements. We apply Swiss engineering principles to every aspect: precise, methodical, uncompromising.
+            </p>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">Zero Knowledge</h3>
+            <p class="text-body text-gray-700">
+              Your music is yours. We build our entire architecture around the principle that we should never be able to access your files. Not "we promise not to"—we mathematically cannot.
+            </p>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">Professional Tools</h3>
+            <p class="text-body text-gray-700">
+              Built for professionals by professionals. Every feature designed for real audio workflows, informed by decades of combined studio experience.
+            </p>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-4xl bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-h2 text-gray-900 mb-2xl text-center">The Team</h2>
+        <p class="text-body-lg text-gray-700 mb-xl">
+          VStorage is a Swiss-based company headquartered in Zürich. Our team includes:
+        </p>
+        <ul class="space-y-md text-body-lg text-gray-700 mb-2xl">
+          <li>• Audio engineers with extensive studio experience</li>
+          <li>• Security engineers with financial services and government background</li>
+          <li>• Software developers with research and academic experience</li>
+          <li>• UI/UX designers specializing in professional audio tools</li>
+        </ul>
+        <p class="text-body-lg text-gray-700">
+          We're a small team focused on doing one thing exceptionally well: secure, lossless audio storage for professionals.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact -->
+  <section class="py-4xl bg-gray-100">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <Card class="bg-gray-900 text-white border-none">
+          <h2 class="text-h3 mb-xl">Location</h2>
+          <div class="space-y-lg text-body-lg">
+            <p>
+              <strong>Zürich, Switzerland</strong><br>
+              Swiss-based company<br>
+              Operating under Swiss data protection standards
+            </p>
+            <div class="pt-lg">
+              <h3 class="text-h5 mb-md">Contact</h3>
+              <p class="space-y-sm">
+                General inquiries: contact@vstorage.ch<br>
+                Security issues: security@vstorage.ch (PGP key available)<br>
+                Press: press@vstorage.ch
+              </p>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-4xl bg-primary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-h2 mb-lg">Built for professionals who value audio quality and security</h2>
+      <p class="text-body-lg mb-2xl max-w-2xl mx-auto">
+        Contact us to discuss how we can serve your audio storage needs.
+      </p>
+      <a href="/contact" class="btn-primary !bg-white !text-primary hover:!bg-gray-100">
+        Get in Touch
+      </a>
+    </div>
+  </section>
+</Layout>

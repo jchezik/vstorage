@@ -1,0 +1,50 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="relative bg-gradient-to-b from-white to-gray-100 py-4xl">
+  <div class="container-custom">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Eyebrow -->
+      <div class="eyebrow mb-lg animate-fade-in">
+        SWISS-ENGINEERED AUDIO SECURITY
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-display md:text-[72px] md:leading-[80px] text-gray-900 mb-lg animate-fade-in animation-delay-100">
+        Lossless Audio Storage for Musicians
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-body-lg md:text-[20px] md:leading-[32px] text-gray-700 mb-2xl max-w-3xl mx-auto animate-fade-in animation-delay-200">
+        Professional-grade cloud storage built specifically for audio. Store your masters in WAV, FLAC, and Apple Lossless formats with military-grade AES-256 encryption. Protected by Swiss data sovereignty.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-md animate-fade-in animation-delay-300">
+        <Button href="/contact" variant="primary">
+          Contact for Pricing
+        </Button>
+        <Button href="/features" variant="secondary">
+          View Audio Features
+        </Button>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="mt-3xl flex flex-wrap items-center justify-center gap-xl text-body-sm text-gray-500 animate-fade-in animation-delay-400">
+        <div class="flex items-center gap-sm">
+          <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span>Swiss Data Residency</span>
+        </div>
+        <div class="flex items-center gap-sm">
+          <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span>GDPR-Aligned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

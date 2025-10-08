@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Interface - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #F7F7F7;
+      padding: 40px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      color: white;
+      padding: 32px;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .upload-area {
+      padding: 48px 32px;
+      text-align: center;
+    }
+    .dropzone {
+      border: 3px dashed #E7E0EC;
+      border-radius: 16px;
+      padding: 80px 40px;
+      background: #FAFAFA;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .dropzone:hover {
+      border-color: #6D4AFF;
+      background: #F5F4FF;
+    }
+    .dropzone.dragover {
+      border-color: #6D4AFF;
+      background: #F5F4FF;
+      border-style: solid;
+    }
+    .upload-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+    .upload-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1C1B1F;
+      margin-bottom: 12px;
+    }
+    .upload-subtitle {
+      font-size: 16px;
+      color: #79747E;
+      margin-bottom: 24px;
+    }
+    .btn-upload {
+      background: #6D4AFF;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-upload:hover {
+      background: #8B7FFF;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(109, 74, 255, 0.3);
+    }
+    .formats-supported {
+      margin-top: 24px;
+      font-size: 14px;
+      color: #79747E;
+    }
+    .format-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .format-badge {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .format-badge.wav {
+      background: #F5F4FF;
+      color: #6D4AFF;
+    }
+    .format-badge.flac {
+      background: #E8F5E9;
+      color: #34C759;
+    }
+    .format-badge.alac {
+      background: #FFF3E0;
+      color: #FF9500;
+    }
+    .format-badge.aiff {
+      background: #E3F2FD;
+      color: #007AFF;
+    }
+    .uploads-section {
+      padding: 32px;
+      border-top: 1px solid #E7E0EC;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1C1B1F;
+    }
+    .upload-speed {
+      font-size: 14px;
+      color: #79747E;
+    }
+    .upload-speed strong {
+      color: #34C759;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .upload-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .upload-item {
+      background: #F7F7F7;
+      border: 1px solid #E7E0EC;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .upload-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .file-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .file-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .file-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .file-details {
+      font-size: 14px;
+      color: #79747E;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .upload-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .action-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid #E7E0EC;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .action-btn:hover {
+      border-color: #6D4AFF;
+      color: #6D4AFF;
+    }
+    .action-btn.cancel:hover {
+      border-color: #FF3B30;
+      color: #FF3B30;
+    }
+    .progress-section {
+      margin-top: 12px;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .progress-label {
+      color: #79747E;
+    }
+    .progress-percent {
+      color: #6D4AFF;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .progress-bar {
+      height: 8px;
+      background: #E7E0EC;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+    .progress-details {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #79747E;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .upload-complete {
+      background: #E8F5E9;
+      border-color: #34C759;
+    }
+    .complete-badge {
+      background: #34C759;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .validation-checks {
+      margin-top: 12px;
+      padding: 12px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #49454F;
+    }
+    .check-icon {
+      color: #34C759;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Upload Audio Files</h1>
+      <p>Drag and drop your lossless audio files or click to browse</p>
+    </div>
+
+    <div class="upload-area">
+      <div class="dropzone">
+        <div class="upload-icon">☁️</div>
+        <h2 class="upload-title">Drop your masters here</h2>
+        <p class="upload-subtitle">Or click to select files from your computer</p>
+        <button class="btn-upload">Select Files</button>
+
+        <div class="formats-supported">
+          <p>Supported formats:</p>
+          <div class="format-badges">
+            <span class="format-badge wav">WAV</span>
+            <span class="format-badge flac">FLAC</span>
+            <span class="format-badge alac">ALAC</span>
+            <span class="format-badge aiff">AIFF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="uploads-section">
+      <div class="section-header">
+        <h2 class="section-title">Active Uploads</h2>
+        <div class="upload-speed">
+          Upload speed: <strong>125 MB/s</strong>
+        </div>
+      </div>
+
+      <div class="upload-list">
+        <!-- Upload in progress -->
+        <div class="upload-item">
+          <div class="upload-header">
+            <div class="file-icon">🎵</div>
+            <div class="file-info">
+              <div class="file-name">Track_01.wav</div>
+              <div class="file-details">WAV • 192kHz/24-bit • 245 MB</div>
+            </div>
+            <div class="upload-actions">
+              <div class="action-btn">⏸</div>
+              <div class="action-btn cancel">✕</div>
+            </div>
+          </div>
+
+          <div class="progress-section">
+            <div class="progress-header">
+              <span class="progress-label">Uploading...</span>
+              <span class="progress-percent">89%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 89%;"></div>
+            </div>
+            <div class="progress-details">
+              <span>218 MB of 245 MB</span>
+              <span>~8 seconds remaining</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upload in progress (lower percentage) -->
+        <div class="upload-item">
+          <div class="upload-header">
+            <div class="file-icon">🎵</div>
+            <div class="file-info">
+              <div class="file-name">Track_02.flac</div>
+              <div class="file-details">FLAC • 96kHz/24-bit • 180 MB</div>
+            </div>
+            <div class="upload-actions">
+              <div class="action-btn">⏸</div>
+              <div class="action-btn cancel">✕</div>
+            </div>
+          </div>
+
+          <div class="progress-section">
+            <div class="progress-header">
+              <span class="progress-label">Uploading...</span>
+              <span class="progress-percent">34%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 34%;"></div>
+            </div>
+            <div class="progress-details">
+              <span>61 MB of 180 MB</span>
+              <span>~28 seconds remaining</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completed upload -->
+        <div class="upload-item upload-complete">
+          <div class="upload-header">
+            <div class="file-icon">🎵</div>
+            <div class="file-info">
+              <div class="file-name">Master_Final_V3.wav</div>
+              <div class="file-details">WAV • 192kHz/24-bit • 485 MB</div>
+            </div>
+            <div class="upload-actions">
+              <div class="complete-badge">
+                <span>✓</span>
+                <span>Complete</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="validation-checks">
+            <div class="check-item">
+              <span class="check-icon">✓</span>
+              <span>Format validation passed</span>
+            </div>
+            <div class="check-item">
+              <span class="check-icon">✓</span>
+              <span>Checksum verified (SHA-256)</span>
+            </div>
+            <div class="check-item">
+              <span class="check-icon">✓</span>
+              <span>Encrypted and stored securely</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

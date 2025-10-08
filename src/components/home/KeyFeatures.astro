@@ -1,0 +1,57 @@
+---
+import FeatureCard from '../ui/FeatureCard.astro';
+
+const features = [
+  {
+    icon: '📁',
+    title: 'Native Lossless Formats',
+    description: 'Store your masters without compromise. Full support for WAV (up to 192kHz/32-bit), FLAC lossless compression, Apple Lossless (ALAC), and AIFF. No transcoding, no quality degradation, ever. Every bit preserved exactly as recorded.',
+  },
+  {
+    icon: '🎚️',
+    title: 'Professional Audio Player',
+    description: 'High-quality in-browser playback using Web Audio API. Waveform visualization, precise timeline control, and bit-perfect streaming. Listen to your masters at full quality without downloading.',
+  },
+  {
+    icon: '🔗',
+    title: 'Secure Collaboration',
+    description: 'Share masters securely with producers, labels, and collaborators. Create password-protected links with expiration dates and download limits. Maintain full control over your recordings.',
+  },
+];
+---
+
+<section class="py-4xl bg-gray-100">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-3xl">
+      <h2 class="text-h2 md:text-[42px] md:leading-[52px] text-gray-900 mb-lg">
+        Built for Professional Audio Workflows
+      </h2>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+      {features.map((feature, index) => (
+        <FeatureCard
+          icon={feature.icon}
+          title={feature.title}
+          description={feature.description}
+          class={`animate-fade-in animation-delay-${index * 100}`}
+        />
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-3xl">
+      <a
+        href="/features"
+        class="inline-flex items-center text-body-lg font-semibold text-primary hover:text-primary-hover transition-colors group"
+      >
+        <span>Explore all 10 features</span>
+        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Browser - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #F7F7F7;
+      padding: 40px;
+    }
+    .browser {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 1400px;
+      margin: 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+    .toolbar {
+      background: #FFFFFF;
+      border-bottom: 1px solid #E7E0EC;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .toolbar-btn {
+      background: #6D4AFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .search {
+      flex: 1;
+      max-width: 400px;
+      padding: 10px 16px;
+      border: 1px solid #E7E0EC;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .layout {
+      display: flex;
+    }
+    .sidebar {
+      width: 240px;
+      background: #F7F7F7;
+      border-right: 1px solid #E7E0EC;
+      padding: 16px;
+    }
+    .folder {
+      padding: 10px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 4px;
+      font-size: 14px;
+      color: #49454F;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .folder.active {
+      background: #F5F4FF;
+      color: #6D4AFF;
+      font-weight: 600;
+    }
+    .main {
+      flex: 1;
+      padding: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 2px solid #E7E0EC;
+      color: #49454F;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid #E7E0EC;
+      font-size: 14px;
+    }
+    tr:hover {
+      background: #F7F7F7;
+    }
+    .file-name {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #1C1B1F;
+      font-weight: 500;
+    }
+    .waveform-thumb {
+      width: 60px;
+      height: 30px;
+      background: linear-gradient(90deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 4px;
+      opacity: 0.3;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .badge.wav { background: #F5F4FF; color: #6D4AFF; }
+    .badge.flac { background: #E8F5E9; color: #34C759; }
+    .badge.alac { background: #FFF3E0; color: #FF9500; }
+    .size { color: #79747E; font-family: 'JetBrains Mono', monospace; }
+    .date { color: #79747E; }
+  </style>
+</head>
+<body>
+  <div class="browser">
+    <div class="toolbar">
+      <button class="toolbar-btn">⬆ Upload</button>
+      <button class="toolbar-btn" style="background: #E7E0EC; color: #49454F;">📁 New Folder</button>
+      <input type="text" class="search" placeholder="Search files...">
+      <div style="flex: 1"></div>
+      <span style="color: #79747E; font-size: 14px;">127 GB / 500 GB</span>
+    </div>
+
+    <div class="layout">
+      <div class="sidebar">
+        <div class="folder active">📁 All Files</div>
+        <div class="folder">🎵 Masters</div>
+        <div class="folder">🎚️ Stems</div>
+        <div class="folder">🎧 Demos</div>
+        <div class="folder">📦 Archives</div>
+        <div style="margin-top: 24px; padding: 10px 12px;">
+          <div style="font-size: 12px; color: #79747E; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Shared with me</div>
+          <div class="folder">👥 Collaborations</div>
+        </div>
+      </div>
+
+      <div class="main">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Format</th>
+              <th>Size</th>
+              <th>Modified</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="file-name">
+                  <div class="waveform-thumb"></div>
+                  <span>Master_Final_V3.wav</span>
+                </div>
+              </td>
+              <td><span class="badge wav">WAV</span> 192kHz/24-bit</td>
+              <td class="size">485 MB</td>
+              <td class="date">Today, 2:34 PM</td>
+              <td class="date">3:47</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name">
+                  <div class="waveform-thumb"></div>
+                  <span>Mix_Revision_2.flac</span>
+                </div>
+              </td>
+              <td><span class="badge flac">FLAC</span> 96kHz/24-bit</td>
+              <td class="size">287 MB</td>
+              <td class="date">Yesterday, 5:12 PM</td>
+              <td class="date">3:47</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name">
+                  <div class="waveform-thumb"></div>
+                  <span>Demo_Track_01.alac</span>
+                </div>
+              </td>
+              <td><span class="badge alac">ALAC</span> 48kHz/24-bit</td>
+              <td class="size">156 MB</td>
+              <td class="date">2 days ago</td>
+              <td class="date">4:12</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name">
+                  <div class="waveform-thumb"></div>
+                  <span>Vocals_Stem.wav</span>
+                </div>
+              </td>
+              <td><span class="badge wav">WAV</span> 48kHz/32-bit</td>
+              <td class="size">312 MB</td>
+              <td class="date">3 days ago</td>
+              <td class="date">3:45</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="file-name">
+                  <div class="waveform-thumb"></div>
+                  <span>Drums_Stem.wav</span>
+                </div>
+              </td>
+              <td><span class="badge wav">WAV</span> 48kHz/32-bit</td>
+              <td class="size">298 MB</td>
+              <td class="date">3 days ago</td>
+              <td class="date">3:45</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

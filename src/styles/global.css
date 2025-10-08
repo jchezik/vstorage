@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-900 bg-white;
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+
+  h2 {
+    @apply text-h2;
+  }
+
+  h3 {
+    @apply text-h3;
+  }
+
+  h4 {
+    @apply text-h4;
+  }
+
+  h5 {
+    @apply text-h5;
+  }
+
+  p {
+    @apply text-body;
+  }
+
+  code {
+    @apply font-mono text-body-sm;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-container mx-auto px-lg md:px-xl lg:px-2xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-xl py-md rounded-button font-semibold text-body transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-hover active:bg-primary-active focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply btn bg-transparent text-primary border-2 border-primary hover:bg-primary-tint focus:ring-primary;
+  }
+
+  .card {
+    @apply bg-white border border-gray-300 rounded-card p-lg shadow-card hover:shadow-card-hover transition-shadow duration-200;
+  }
+
+  .eyebrow {
+    @apply text-body-sm font-semibold tracking-wider uppercase text-primary;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

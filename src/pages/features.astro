@@ -1,0 +1,264 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Card from '../components/ui/Card.astro';
+---
+
+<Layout
+  title="Professional Audio Features"
+  description="Everything you need for lossless audio storage and collaboration. Native format support, professional player, secure sharing, version control, and more."
+>
+  <!-- Page Hero -->
+  <section class="py-3xl bg-gradient-to-b from-white to-gray-100">
+    <div class="container-custom text-center">
+      <h1 class="text-h1 md:text-display text-gray-900 mb-lg">Professional Audio Features</h1>
+      <p class="text-body-lg text-gray-700 max-w-3xl mx-auto">
+        Everything you need for lossless audio storage and collaboration
+      </p>
+    </div>
+  </section>
+
+  <!-- Feature 1: Lossless Audio Formats -->
+  <section class="py-4xl bg-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="mb-2xl">
+          <h2 class="text-h2 text-gray-900 mb-md">Native Lossless Format Support</h2>
+          <p class="text-h5 text-gray-700 mb-xl">Store masters without compromise</p>
+          <p class="text-body-lg text-gray-700">
+            VStorage provides native support for all professional lossless audio formats. Store your recordings in their original quality—no transcoding, no resampling, no quality loss.
+          </p>
+        </div>
+
+        <!-- File Browser Mockup -->
+        <div class="mb-3xl">
+          <img src="/images/mockups/file-browser.png" alt="Professional File Browser" class="w-full rounded-xl shadow-lg" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-xl mb-2xl">
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">WAV (Waveform Audio File Format)</h3>
+            <ul class="space-y-sm text-body text-gray-700">
+              <li>• PCM uncompressed audio</li>
+              <li>• Sample rates: 44.1kHz, 48kHz, 88.2kHz, 96kHz, 176.4kHz, 192kHz</li>
+              <li>• Bit depths: 16-bit, 24-bit, 32-bit float</li>
+              <li>• Channels: Mono to 32-channel surround</li>
+              <li>• Maximum file size: Up to 4GB per file</li>
+              <li>• Ideal for: Studio masters, final mixes</li>
+            </ul>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">FLAC (Free Lossless Audio Codec)</h3>
+            <ul class="space-y-sm text-body text-gray-700">
+              <li>• Lossless compression (40-60% size reduction)</li>
+              <li>• Sample rates: Up to 655kHz</li>
+              <li>• Bit depths: 4-32 bit</li>
+              <li>• Channels: Up to 8 channels</li>
+              <li>• No file size limit</li>
+              <li>• Ideal for: Archival, efficient storage</li>
+            </ul>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">Apple Lossless (ALAC)</h3>
+            <ul class="space-y-sm text-body text-gray-700">
+              <li>• Lossless compression optimized for Apple ecosystem</li>
+              <li>• Sample rates: Up to 384kHz</li>
+              <li>• Bit depths: 16-bit, 24-bit, 32-bit</li>
+              <li>• Channels: Up to 8 channels</li>
+              <li>• Ideal for: Mac-based workflows, iOS distribution</li>
+            </ul>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">AIFF (Audio Interchange File Format)</h3>
+            <ul class="space-y-sm text-body text-gray-700">
+              <li>• Uncompressed PCM (Mac equivalent of WAV)</li>
+              <li>• Same specifications as WAV</li>
+              <li>• Ideal for: Legacy Mac studios, Pro Tools workflows</li>
+            </ul>
+          </Card>
+        </div>
+
+        <Card class="bg-gray-900 text-white border-none">
+          <h3 class="text-h4 mb-lg">Technical Details</h3>
+          <ul class="space-y-md text-body">
+            <li>• Bit-perfect storage (no quality loss)</li>
+            <li>• Original sample rate preserved</li>
+            <li>• Metadata preserved (BWF, ID3, etc.)</li>
+            <li>• Checksum verification on upload</li>
+            <li>• Format validation before storage</li>
+          </ul>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 2: Professional Audio Player -->
+  <section class="py-4xl bg-gray-100">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="mb-2xl">
+          <h2 class="text-h2 text-gray-900 mb-md">High-Quality In-Browser Playback</h2>
+          <p class="text-h5 text-gray-700 mb-xl">Stream your masters at full quality</p>
+          <p class="text-body-lg text-gray-700">
+            Built-in professional audio player powered by Web Audio API. Stream your lossless files at full quality without downloading. Precise timeline control, waveform visualization, and bit-perfect playback.
+          </p>
+        </div>
+
+        <!-- Audio Player Mockup -->
+        <div class="mb-3xl">
+          <img src="/images/mockups/audio-player.png" alt="Professional Audio Player Interface" class="w-full rounded-xl shadow-lg" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">Audio Engine: Web Audio API</h3>
+            <ul class="space-y-sm text-body text-gray-700">
+              <li>• Native browser audio processing</li>
+              <li>• Zero transcoding (maintains original quality)</li>
+              <li>• Low-latency playback engine</li>
+              <li>• Sample-accurate positioning</li>
+            </ul>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-md">Waveform Visualization</h3>
+            <ul class="space-y-sm text-body text-gray-700">
+              <li>• Real-time waveform rendering</li>
+              <li>• Peak and RMS display</li>
+              <li>• Zoom levels from full file to sample-accurate</li>
+              <li>• Color-coded by amplitude</li>
+              <li>• Purple gradient aesthetic (#6D4AFF)</li>
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features 3-10 Continued (abbreviated for space) -->
+  <section class="py-4xl bg-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto space-y-4xl">
+        <!-- Feature 3 -->
+        <div>
+          <h2 class="text-h2 text-gray-900 mb-md">Share Masters Securely</h2>
+          <p class="text-h5 text-gray-700 mb-lg">Control how your music is shared</p>
+          <p class="text-body-lg text-gray-700 mb-xl">
+            Create secure, time-limited sharing links for clients, labels, and collaborators. Maintain full control over who accesses your recordings and for how long.
+          </p>
+
+          <!-- Secure Sharing Mockup -->
+          <div class="mb-xl">
+            <img src="/images/mockups/secure-sharing.png" alt="Secure Sharing Interface" class="w-full rounded-xl shadow-lg" />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+            <Card>
+              <h4 class="text-h5 text-gray-900 mb-md">Password Protection</h4>
+              <p class="text-body text-gray-700">Set unique password per shared link with PBKDF2 key derivation</p>
+            </Card>
+            <Card>
+              <h4 class="text-h5 text-gray-900 mb-md">Expiration Settings</h4>
+              <p class="text-body text-gray-700">Set custom expiration date/time with automatic link deactivation</p>
+            </Card>
+            <Card>
+              <h4 class="text-h5 text-gray-900 mb-md">Download Limits</h4>
+              <p class="text-body text-gray-700">Limit number of downloads and track activity</p>
+            </Card>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div>
+          <h2 class="text-h2 text-gray-900 mb-md">Track Your Mix Versions</h2>
+          <p class="text-h5 text-gray-700 mb-lg">Never lose a mix again</p>
+          <p class="text-body-lg text-gray-700 mb-xl">
+            Automatic version tracking for every upload. Compare mixes side-by-side, restore previous versions, and maintain complete project history.
+          </p>
+
+          <!-- Version Control Mockup -->
+          <div>
+            <img src="/images/mockups/version-control.png" alt="Version Control Timeline" class="w-full rounded-xl shadow-lg" />
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div>
+          <h2 class="text-h2 text-gray-900 mb-md">Swiss Privacy for Your Masters</h2>
+          <p class="text-h5 text-gray-700 mb-lg">Military-grade security in Switzerland</p>
+          <p class="text-body-lg text-gray-700 mb-xl">
+            Your recordings are stored in secure Swiss data centers with military-grade encryption. Protected by Swiss privacy laws—the world's strongest.
+          </p>
+          <Card class="bg-primary text-white border-none">
+            <h4 class="text-h4 mb-lg">Data centers in Zurich, Switzerland</h4>
+            <ul class="space-y-md text-body">
+              <li>• Enterprise-grade facilities</li>
+              <li>• 24/7 security monitoring</li>
+              <li>• Advanced biometric access controls</li>
+              <li>• Triple replication in separate racks</li>
+              <li>• High durability standards</li>
+            </ul>
+          </Card>
+        </div>
+
+        <!-- Features 6-10 with Mockups -->
+        <div>
+          <h2 class="text-h2 text-gray-900 mb-2xl">Additional Professional Features</h2>
+
+          <!-- Upload Interface -->
+          <div class="mb-3xl">
+            <h3 class="text-h3 text-gray-900 mb-lg">⚡ Fast Transfer Speeds</h3>
+            <p class="text-body-lg text-gray-700 mb-xl">Upload albums in minutes with parallel chunk upload technology. High-speed transfer capabilities.</p>
+            <img src="/images/mockups/upload.png" alt="Upload Interface" class="w-full rounded-xl shadow-lg" />
+          </div>
+
+          <!-- Collaboration -->
+          <div class="mb-3xl">
+            <h3 class="text-h3 text-gray-900 mb-lg">👥 Real-Time Collaboration</h3>
+            <p class="text-body-lg text-gray-700 mb-xl">Work with your team in real-time. Role-based permissions and activity tracking.</p>
+            <img src="/images/mockups/collaboration.png" alt="Collaboration Dashboard" class="w-full rounded-xl shadow-lg" />
+          </div>
+
+          <!-- Mobile Apps -->
+          <div class="mb-3xl">
+            <h3 class="text-h3 text-gray-900 mb-lg">📱 Mobile & Cross-Platform</h3>
+            <p class="text-body-lg text-gray-700 mb-xl">Native iOS and Android apps. Access from anywhere with bit-perfect quality.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+              <img src="/images/mockups/mobile-ios.png" alt="iOS App Interface" class="w-full rounded-xl shadow-lg" />
+              <img src="/images/mockups/mobile-android.png" alt="Android App Interface" class="w-full rounded-xl shadow-lg" />
+            </div>
+          </div>
+
+          <!-- Storage Dashboard -->
+          <div class="mb-3xl">
+            <h3 class="text-h3 text-gray-900 mb-lg">💾 Automated Backups & Storage Dashboard</h3>
+            <p class="text-body-lg text-gray-700 mb-xl">Triple redundancy and automated snapshots. Monitor your usage with comprehensive dashboards.</p>
+            <img src="/images/mockups/storage-dashboard.png" alt="Storage Dashboard" class="w-full rounded-xl shadow-lg" />
+          </div>
+
+          <!-- Security Dashboard -->
+          <div>
+            <h3 class="text-h3 text-gray-900 mb-lg">🔐 Swiss Data Center Security</h3>
+            <p class="text-body-lg text-gray-700 mb-xl">Real-time monitoring of your Swiss data center infrastructure. Designed for high uptime availability.</p>
+            <img src="/images/mockups/security-dashboard.png" alt="Security Dashboard" class="w-full rounded-xl shadow-lg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-4xl bg-primary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-h2 mb-lg">Ready to secure your masters?</h2>
+      <p class="text-body-lg mb-2xl max-w-2xl mx-auto">
+        Contact us to discuss enterprise pricing for your audio storage needs.
+      </p>
+      <a href="/contact" class="btn-primary !bg-white !text-primary hover:!bg-gray-100">
+        Contact for Pricing
+      </a>
+    </div>
+  </section>
+</Layout>

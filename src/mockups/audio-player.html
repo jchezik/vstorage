@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Player Interface - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #1C1B1F;
+      display: flex;
+      align-items: center;
+      justify-center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .player {
+      background: #2C2B2F;
+      border-radius: 16px;
+      padding: 32px;
+      width: 100%;
+      max-width: 1200px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .track-info {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .album-art {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+    .track-details h2 {
+      color: #FFFFFF;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .track-meta {
+      color: #79747E;
+      font-size: 16px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .format-badge {
+      display: inline-block;
+      background: #6D4AFF;
+      color: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    .waveform {
+      height: 140px;
+      background: #1C1B1F;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .waveform-bars {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 2px;
+      padding: 0 16px;
+    }
+    .bar {
+      flex: 1;
+      background: linear-gradient(180deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 2px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .bar.peak { opacity: 1; }
+    .bar.low { opacity: 0.3; }
+    .playhead {
+      position: absolute;
+      top: 0;
+      left: 35%;
+      width: 2px;
+      height: 100%;
+      background: #FF3B30;
+      z-index: 10;
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      color: #79747E;
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 24px;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      justify-content: center;
+    }
+    .play-btn {
+      width: 64px;
+      height: 64px;
+      background: #6D4AFF;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-center;
+      transition: all 0.2s;
+    }
+    .play-btn:hover {
+      background: #8B7FFF;
+      transform: scale(1.05);
+    }
+    .control-btn {
+      width: 48px;
+      height: 48px;
+      background: #49454F;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-center;
+      transition: all 0.2s;
+    }
+    .control-btn:hover {
+      background: #6D4AFF;
+    }
+    .volume {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #FFFFFF;
+    }
+    .volume-slider {
+      width: 120px;
+      height: 6px;
+      background: #49454F;
+      border-radius: 3px;
+      position: relative;
+    }
+    .volume-progress {
+      width: 70%;
+      height: 100%;
+      background: #6D4AFF;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="player">
+    <div class="track-info">
+      <div class="album-art"></div>
+      <div class="track-details">
+        <h2>Master_Final_V3.wav</h2>
+        <div class="track-meta">WAV • 192kHz/24-bit • 485 MB</div>
+        <span class="format-badge">Lossless PCM</span>
+      </div>
+    </div>
+
+    <div class="waveform">
+      <div class="playhead"></div>
+      <div class="waveform-bars">
+        <div class="bar low" style="height: 30%"></div>
+        <div class="bar" style="height: 50%"></div>
+        <div class="bar" style="height: 70%"></div>
+        <div class="bar peak" style="height: 90%"></div>
+        <div class="bar peak" style="height: 95%"></div>
+        <div class="bar peak" style="height: 85%"></div>
+        <div class="bar" style="height: 75%"></div>
+        <div class="bar" style="height: 60%"></div>
+        <div class="bar" style="height: 80%"></div>
+        <div class="bar peak" style="height: 92%"></div>
+        <div class="bar peak" style="height: 88%"></div>
+        <div class="bar" style="height: 65%"></div>
+        <div class="bar" style="height: 55%"></div>
+        <div class="bar" style="height: 70%"></div>
+        <div class="bar peak" style="height: 85%"></div>
+        <div class="bar" style="height: 75%"></div>
+        <div class="bar" style="height: 60%"></div>
+        <div class="bar" style="height: 50%"></div>
+        <div class="bar" style="height: 65%"></div>
+        <div class="bar" style="height: 80%"></div>
+        <div class="bar peak" style="height: 90%"></div>
+        <div class="bar" style="height: 70%"></div>
+        <div class="bar" style="height: 55%"></div>
+        <div class="bar low" style="height: 40%"></div>
+        <div class="bar low" style="height: 35%"></div>
+        <div class="bar" style="height: 50%"></div>
+        <div class="bar" style="height: 70%"></div>
+        <div class="bar peak" style="height: 85%"></div>
+        <div class="bar" style="height: 75%"></div>
+        <div class="bar" style="height: 60%"></div>
+        <div class="bar" style="height: 50%"></div>
+        <div class="bar" style="height: 65%"></div>
+        <div class="bar peak" style="height: 88%"></div>
+        <div class="bar" style="height: 70%"></div>
+        <div class="bar" style="height: 55%"></div>
+        <div class="bar low" style="height: 45%"></div>
+        <div class="bar low" style="height: 30%"></div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <span>0:45</span>
+      <span>-2:15</span>
+    </div>
+
+    <div class="controls">
+      <button class="control-btn">⏮</button>
+      <button class="play-btn">▶</button>
+      <button class="control-btn">⏭</button>
+      <div style="flex: 1"></div>
+      <div class="volume">
+        <span>🔊</span>
+        <div class="volume-slider">
+          <div class="volume-progress"></div>
+        </div>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px;">-6 dB</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

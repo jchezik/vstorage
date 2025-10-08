@@ -1,0 +1,86 @@
+---
+import Card from '../ui/Card.astro';
+---
+
+<section class="py-4xl bg-white">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3xl items-center">
+      <!-- Content -->
+      <div class="space-y-xl">
+        <h2 class="text-h2 md:text-[42px] md:leading-[52px] text-gray-900">
+          Your Masters. Your Control.
+        </h2>
+
+        <div class="space-y-lg text-body-lg text-gray-700">
+          <p>
+            Every audio file is encrypted with AES-256-GCM before it leaves your device. We use zero-knowledge architecture—we mathematically cannot access your files. Your masters are stored in Swiss data centers, protected by the world's strongest privacy laws.
+          </p>
+
+          <p>
+            We don't log your listening activity. We don't track downloads. We don't analyze your music. Your art remains yours, protected by Swiss data sovereignty and military-grade encryption.
+          </p>
+        </div>
+
+        <a
+          href="/security"
+          class="inline-flex items-center text-body-lg font-semibold text-primary hover:text-primary-hover transition-colors group"
+        >
+          <span>Learn about our security</span>
+          <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Technical Details Card -->
+      <Card class="bg-gray-900 text-white border-none">
+        <div class="space-y-lg">
+          <h3 class="text-h4">Technical Details</h3>
+          <ul class="space-y-md">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-md flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-body">AES-256-GCM client-side encryption</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-md flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-body">Zero-knowledge architecture (server-blind storage)</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-md flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-body">TLS 1.3 with Perfect Forward Secrecy</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-md flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-body">Swiss data residency (Zurich facility)</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-md flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-body">Triple redundancy, high durability standards</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-md flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-md flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-body">No activity logging policy</span>
+            </li>
+          </ul>
+        </div>
+      </Card>
+    </div>
+  </div>
+</section>

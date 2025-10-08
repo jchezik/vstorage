@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Version Control Timeline - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #F7F7F7;
+      padding: 40px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: white;
+      border-bottom: 1px solid #E7E0EC;
+      padding: 24px 32px;
+    }
+    .header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1C1B1F;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 14px;
+      color: #79747E;
+    }
+    .content {
+      display: flex;
+    }
+    .timeline-panel {
+      width: 400px;
+      background: #F7F7F7;
+      border-right: 1px solid #E7E0EC;
+      padding: 24px;
+      max-height: 800px;
+      overflow-y: auto;
+    }
+    .timeline-header {
+      font-size: 13px;
+      font-weight: 600;
+      color: #49454F;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .version-item {
+      background: white;
+      border: 2px solid #E7E0EC;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .version-item:hover {
+      border-color: #6D4AFF;
+      transform: translateX(4px);
+    }
+    .version-item.active {
+      border-color: #6D4AFF;
+      background: #F5F4FF;
+    }
+    .version-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .version-number {
+      font-size: 18px;
+      font-weight: 700;
+      color: #6D4AFF;
+    }
+    .version-badge {
+      background: #34C759;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .version-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1C1B1F;
+      margin-bottom: 6px;
+    }
+    .version-meta {
+      font-size: 13px;
+      color: #79747E;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .version-meta .dot {
+      width: 3px;
+      height: 3px;
+      background: #79747E;
+      border-radius: 50%;
+    }
+    .comparison-panel {
+      flex: 1;
+      padding: 32px;
+    }
+    .comparison-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .comparison-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1C1B1F;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+    .btn-primary {
+      background: #6D4AFF;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #8B7FFF;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #E7E0EC;
+      color: #49454F;
+    }
+    .waveform-comparison {
+      background: #1C1B1F;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .waveform-label {
+      color: #79747E;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .waveform-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .waveform-indicator.current {
+      background: #6D4AFF;
+    }
+    .waveform-indicator.previous {
+      background: #79747E;
+    }
+    .waveform {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 20px;
+    }
+    .waveform-bar {
+      flex: 1;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .stat-card {
+      background: #F7F7F7;
+      border: 1px solid #E7E0EC;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: #79747E;
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+    }
+    .stat-change {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .stat-change.positive {
+      color: #34C759;
+    }
+    .stat-change.negative {
+      color: #FF3B30;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Mix_Progression.wav - Version History</h1>
+      <p>Track and compare all versions of your mix</p>
+    </div>
+
+    <div class="content">
+      <div class="timeline-panel">
+        <div class="timeline-header">Version Timeline</div>
+
+        <div class="version-item active">
+          <div class="version-header">
+            <span class="version-number">v7</span>
+            <span class="version-badge">Current</span>
+          </div>
+          <div class="version-title">Final Master</div>
+          <div class="version-meta">
+            <span>Today, 2:34 PM</span>
+            <span class="dot"></span>
+            <span>485 MB</span>
+          </div>
+        </div>
+
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v6</span>
+          </div>
+          <div class="version-title">Mix Revision 3</div>
+          <div class="version-meta">
+            <span>Yesterday, 5:12 PM</span>
+            <span class="dot"></span>
+            <span>482 MB</span>
+          </div>
+        </div>
+
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v5</span>
+          </div>
+          <div class="version-title">Mix Revision 2</div>
+          <div class="version-meta">
+            <span>2 days ago</span>
+            <span class="dot"></span>
+            <span>478 MB</span>
+          </div>
+        </div>
+
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v4</span>
+          </div>
+          <div class="version-title">Mix Revision 1</div>
+          <div class="version-meta">
+            <span>3 days ago</span>
+            <span class="dot"></span>
+            <span>475 MB</span>
+          </div>
+        </div>
+
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v3</span>
+          </div>
+          <div class="version-title">First Mix</div>
+          <div class="version-meta">
+            <span>5 days ago</span>
+            <span class="dot"></span>
+            <span>472 MB</span>
+          </div>
+        </div>
+
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v2</span>
+          </div>
+          <div class="version-title">Rough Mix v2</div>
+          <div class="version-meta">
+            <span>1 week ago</span>
+            <span class="dot"></span>
+            <span>468 MB</span>
+          </div>
+        </div>
+
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v1</span>
+          </div>
+          <div class="version-title">Initial Rough Mix</div>
+          <div class="version-meta">
+            <span>2 weeks ago</span>
+            <span class="dot"></span>
+            <span>465 MB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison-panel">
+        <div class="comparison-header">
+          <span class="comparison-title">v7 vs v6 Comparison</span>
+          <div class="action-buttons">
+            <button class="btn btn-secondary">Download v7</button>
+            <button class="btn btn-primary">Restore v6</button>
+          </div>
+        </div>
+
+        <div class="waveform-comparison">
+          <div class="waveform-label">
+            <span class="waveform-indicator current"></span>
+            <span>v7 - Final Master (Current)</span>
+          </div>
+          <div class="waveform">
+            <div class="waveform-bar" style="height: 45%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 60%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 85%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 92%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 88%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 75%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 65%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 80%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 90%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 85%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 70%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 55%; background: #6D4AFF;"></div>
+            <div class="waveform-bar" style="height: 40%; background: #6D4AFF;"></div>
+          </div>
+
+          <div class="waveform-label">
+            <span class="waveform-indicator previous"></span>
+            <span>v6 - Mix Revision 3</span>
+          </div>
+          <div class="waveform">
+            <div class="waveform-bar" style="height: 42%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 58%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 82%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 89%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 85%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 72%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 63%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 78%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 87%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 82%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 68%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 53%; background: #79747E;"></div>
+            <div class="waveform-bar" style="height: 38%; background: #79747E;"></div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Peak Level (LUFS)</div>
+            <div class="stat-value">-8.2</div>
+            <div class="stat-change positive">↑ 0.3 dB louder</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Dynamic Range</div>
+            <div class="stat-value">12.5 dB</div>
+            <div class="stat-change negative">↓ 0.8 dB less dynamic</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">File Size</div>
+            <div class="stat-value">485 MB</div>
+            <div class="stat-change positive">↑ 3 MB larger</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

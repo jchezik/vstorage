@@ -1,0 +1,35 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="py-4xl bg-primary">
+  <div class="container-custom">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <h2 class="text-h2 md:text-[42px] md:leading-[52px] mb-lg">
+        Enterprise Audio Storage Pricing
+      </h2>
+
+      <p class="text-body-lg md:text-[20px] md:leading-[32px] mb-xl max-w-2xl mx-auto opacity-95">
+        Custom solutions based on your storage needs and workflow requirements. From independent producers to recording labels, we scale with you.
+      </p>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-card p-xl mb-2xl inline-block">
+        <p class="text-body-lg font-mono mb-sm">
+          contact@vstorage.ch
+        </p>
+        <p class="text-body-sm opacity-75">
+          Please type this address to contact us about enterprise pricing
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-md">
+        <Button href="/pricing" variant="secondary" class="!bg-white !text-primary hover:!bg-gray-100">
+          View Pricing Details
+        </Button>
+        <Button href="/features" variant="text" class="!text-white hover:!bg-white/10">
+          Explore Features
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Android App - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .device {
+      width: 412px;
+      height: 915px;
+      background: #1C1B1F;
+      border-radius: 42px;
+      padding: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .screen {
+      width: 100%;
+      height: 100%;
+      background: #1C1B1F;
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+    }
+    .status-bar {
+      height: 32px;
+      background: transparent;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #E7E0EC;
+      font-size: 13px;
+    }
+    .status-left {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .status-right {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .app-bar {
+      height: 64px;
+      background: #1C1B1F;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(231, 224, 236, 0.1);
+    }
+    .app-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: #E7E0EC;
+    }
+    .app-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #E7E0EC;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .icon-btn:active {
+      background: rgba(231, 224, 236, 0.1);
+    }
+    .content {
+      height: calc(100% - 32px - 64px - 80px);
+      background: #1C1B1F;
+      overflow-y: auto;
+      padding: 16px;
+    }
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      padding-bottom: 16px;
+      overflow-x: auto;
+    }
+    .chip {
+      background: #49454F;
+      color: #E7E0EC;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .chip.active {
+      background: #6D4AFF;
+      color: white;
+    }
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .file-item {
+      background: #2C2B2F;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .file-item:active {
+      background: #3C3B3F;
+    }
+    .file-thumbnail {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 12px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .file-details {
+      flex: 1;
+      min-width: 0;
+    }
+    .file-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: #E7E0EC;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .file-meta {
+      font-size: 14px;
+      color: #79747E;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .format-badge {
+      background: #6D4AFF;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'Roboto Mono', monospace;
+    }
+    .file-action {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #79747E;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .fab {
+      position: absolute;
+      bottom: 96px;
+      right: 16px;
+      width: 56px;
+      height: 56px;
+      background: #6D4AFF;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(109, 74, 255, 0.4);
+      cursor: pointer;
+      z-index: 10;
+    }
+    .nav-bar {
+      height: 80px;
+      background: #2C2B2F;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 8px 0;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 8px 24px;
+      border-radius: 16px;
+      transition: background 0.2s;
+    }
+    .nav-item.active {
+      background: rgba(109, 74, 255, 0.15);
+    }
+    .nav-icon {
+      font-size: 24px;
+    }
+    .nav-item.active .nav-icon {
+      color: #6D4AFF;
+    }
+    .nav-item.inactive .nav-icon {
+      color: #79747E;
+    }
+    .nav-label {
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .nav-item.active .nav-label {
+      color: #6D4AFF;
+    }
+    .nav-item.inactive .nav-label {
+      color: #79747E;
+    }
+  </style>
+</head>
+<body>
+  <div class="device">
+    <div class="screen">
+      <div class="status-bar">
+        <div class="status-left">
+          <span>9:41</span>
+        </div>
+        <div class="status-right">
+          <span>📶</span>
+          <span>📡</span>
+          <span>🔋</span>
+        </div>
+      </div>
+
+      <div class="app-bar">
+        <div class="app-title">Library</div>
+        <div class="app-actions">
+          <div class="icon-btn">🔍</div>
+          <div class="icon-btn">⋮</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="filter-chips">
+          <div class="chip active">All</div>
+          <div class="chip">Masters</div>
+          <div class="chip">Stems</div>
+          <div class="chip">Demos</div>
+          <div class="chip">Recent</div>
+        </div>
+
+        <div class="file-list">
+          <div class="file-item">
+            <div class="file-thumbnail">🎵</div>
+            <div class="file-details">
+              <div class="file-name">Master_Final_V3.wav</div>
+              <div class="file-meta">
+                <span class="format-badge">WAV</span>
+                <span>485 MB</span>
+                <span>•</span>
+                <span>3:47</span>
+              </div>
+            </div>
+            <div class="file-action">⋮</div>
+          </div>
+
+          <div class="file-item">
+            <div class="file-thumbnail">🎵</div>
+            <div class="file-details">
+              <div class="file-name">Mix_Revision_2.flac</div>
+              <div class="file-meta">
+                <span class="format-badge" style="background: #34C759;">FLAC</span>
+                <span>287 MB</span>
+                <span>•</span>
+                <span>3:47</span>
+              </div>
+            </div>
+            <div class="file-action">⋮</div>
+          </div>
+
+          <div class="file-item">
+            <div class="file-thumbnail">🎵</div>
+            <div class="file-details">
+              <div class="file-name">Demo_Track_01.alac</div>
+              <div class="file-meta">
+                <span class="format-badge" style="background: #FF9500;">ALAC</span>
+                <span>156 MB</span>
+                <span>•</span>
+                <span>4:12</span>
+              </div>
+            </div>
+            <div class="file-action">⋮</div>
+          </div>
+
+          <div class="file-item">
+            <div class="file-thumbnail">🎵</div>
+            <div class="file-details">
+              <div class="file-name">Vocals_Stem.wav</div>
+              <div class="file-meta">
+                <span class="format-badge">WAV</span>
+                <span>312 MB</span>
+                <span>•</span>
+                <span>3:45</span>
+              </div>
+            </div>
+            <div class="file-action">⋮</div>
+          </div>
+
+          <div class="file-item">
+            <div class="file-thumbnail">🎵</div>
+            <div class="file-details">
+              <div class="file-name">Drums_Stem.wav</div>
+              <div class="file-meta">
+                <span class="format-badge">WAV</span>
+                <span>298 MB</span>
+                <span>•</span>
+                <span>3:45</span>
+              </div>
+            </div>
+            <div class="file-action">⋮</div>
+          </div>
+
+          <div class="file-item">
+            <div class="file-thumbnail">🎵</div>
+            <div class="file-details">
+              <div class="file-name">Guitar_Stem.wav</div>
+              <div class="file-meta">
+                <span class="format-badge">WAV</span>
+                <span>275 MB</span>
+                <span>•</span>
+                <span>3:45</span>
+              </div>
+            </div>
+            <div class="file-action">⋮</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fab">⬆️</div>
+
+      <div class="nav-bar">
+        <div class="nav-item active">
+          <div class="nav-icon">📚</div>
+          <div class="nav-label">Library</div>
+        </div>
+        <div class="nav-item inactive">
+          <div class="nav-icon">▶️</div>
+          <div class="nav-label">Player</div>
+        </div>
+        <div class="nav-item inactive">
+          <div class="nav-icon">☁️</div>
+          <div class="nav-label">Upload</div>
+        </div>
+        <div class="nav-item inactive">
+          <div class="nav-icon">⚙️</div>
+          <div class="nav-label">Settings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

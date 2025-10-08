@@ -1,0 +1,44 @@
+---
+import Card from '../ui/Card.astro';
+
+const indicators = [
+  {
+    icon: '🎵',
+    title: '100% Lossless Quality',
+    description: 'WAV, FLAC, ALAC preserved at original bit depth\nUp to 192kHz/32-bit supported',
+  },
+  {
+    icon: '🔐',
+    title: 'Military-Grade Security',
+    description: 'AES-256-GCM encryption with zero-knowledge architecture\nSwiss data residency',
+  },
+  {
+    icon: '⚡',
+    title: 'Optimized for Audio',
+    description: 'Fast transfer of large files up to 60GB\nDirect playback without transcoding',
+  },
+  {
+    icon: '🇨🇭',
+    title: 'Swiss Privacy Protection',
+    description: 'Your masters protected by Swiss data protection principles\nNo activity logging, ever',
+  },
+];
+---
+
+<section class="py-4xl bg-white">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-xl">
+      {indicators.map((indicator, index) => (
+        <Card class={`text-center animate-fade-in animation-delay-${index * 100}`}>
+          <div class="flex flex-col items-center space-y-lg">
+            <div class="text-5xl">{indicator.icon}</div>
+            <h3 class="text-h4 text-gray-900">{indicator.title}</h3>
+            <p class="text-body-sm text-gray-700 whitespace-pre-line">
+              {indicator.description}
+            </p>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

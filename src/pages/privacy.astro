@@ -1,0 +1,351 @@
+---
+import Layout from '../components/layout/Layout.astro';
+---
+
+<Layout
+  title="Privacy Policy"
+  description="How VStorage protects your data and respects your privacy"
+>
+  <div class="py-4xl bg-white">
+    <div class="max-w-[800px] mx-auto px-lg md:px-xl">
+      <!-- Header -->
+      <div class="mb-3xl">
+        <h1 class="text-h1 md:text-display text-gray-900 mb-lg">Privacy Policy</h1>
+        <p class="text-body-lg text-gray-700 mb-lg">
+          <strong>Effective Date:</strong> January 15, 2025
+        </p>
+        <p class="text-body text-gray-700 italic border-l-4 border-primary pl-lg py-md bg-primary-tint">
+          This document is provided for informational purposes. While we strive for accuracy, this does not constitute legal advice. For legal questions, consult a qualified attorney.
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <!-- Section 1 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">1. Introduction</h2>
+          <p class="text-body text-gray-700 leading-relaxed mb-md">
+            VStorage ("we," "us," "our") is committed to protecting your privacy. As a Swiss-based company headquartered in Zürich, Switzerland, we operate under Swiss data protection law, which provides some of the strongest privacy protections in the world.
+          </p>
+          <p class="text-body text-gray-700 leading-relaxed mb-md">
+            This Privacy Policy explains what information we collect, how we use it, and your rights regarding your data. By using VStorage, you agree to this Privacy Policy.
+          </p>
+          <p class="text-body text-gray-700 leading-relaxed">
+            <strong>Contact us about privacy:</strong> privacy@vstorage.ch
+          </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">2. Information We Collect</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">2.1 Account Information</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Email address (encrypted at rest)</li>
+            <li>Account creation date</li>
+            <li>Subscription plan type</li>
+            <li>Payment information (processed by our payment processor, not stored on our servers)</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">2.2 File Storage</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Encrypted audio files (WAV, FLAC, ALAC, AIFF)</li>
+            <li><strong>We CANNOT access file content</strong> due to zero-knowledge encryption</li>
+            <li>We only see encrypted bytes - the content is mathematically inaccessible to us</li>
+            <li>File metadata is encrypted</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">2.3 Usage Information (Minimal)</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Total storage used (aggregate number only, not file details)</li>
+            <li>Account login timestamp (last login only)</li>
+            <li>API usage counts (for rate limiting purposes)</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">2.4 Technical Information (Temporary - 24 Hours Only)</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>IP address (security/fraud prevention, <strong>automatically deleted after 24 hours</strong>)</li>
+            <li>Failed login attempts (fraud prevention, 24-hour retention)</li>
+            <li>Device type (browser user agent, not stored, used for compatibility only)</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">2.5 Information We DO NOT Collect</h3>
+          <p class="text-body text-gray-700 mb-md">We deliberately do NOT collect:</p>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>File names, content, or metadata</li>
+            <li>Listening or playback activity</li>
+            <li>Download patterns</li>
+            <li>Search queries</li>
+            <li>Location data</li>
+            <li>Analytics or tracking data</li>
+            <li>Device fingerprints</li>
+          </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">3. How We Use Your Information</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">3.1 Service Provision</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Provide cloud storage service</li>
+            <li>Authenticate your account</li>
+            <li>Process payments</li>
+            <li>Provide customer support</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">3.2 Security</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Prevent fraud and abuse</li>
+            <li>Detect security threats</li>
+            <li>Maintain service integrity</li>
+            <li>All security logs deleted after 24 hours</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">3.3 Communications</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Service announcements (outages, maintenance)</li>
+            <li>Support responses</li>
+            <li>Billing notifications</li>
+            <li><strong>No marketing emails (ever)</strong></li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">3.4 Legal Compliance</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>Comply with Swiss law</li>
+            <li>Respond to valid legal requests (Swiss legal process only)</li>
+            <li><strong>Note:</strong> Zero-knowledge architecture means we cannot provide file content, even under legal compulsion</li>
+          </ul>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">4. Zero-Knowledge Architecture</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">4.1 What It Means</h3>
+          <p class="text-body text-gray-700 leading-relaxed mb-md">
+            Zero-knowledge architecture means we mathematically <strong>cannot</strong> access your files:
+          </p>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Files are encrypted on your device BEFORE upload</li>
+            <li>Encryption keys never transmitted to our servers</li>
+            <li>We cannot decrypt your files, even if we wanted to</li>
+            <li>Even under legal compulsion, we have no technical access</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">4.2 Technical Implementation</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>AES-256-GCM encryption (client-side, in your browser)</li>
+            <li>PBKDF2 key derivation with 100,000 iterations</li>
+            <li>Keys derived from your password on your device</li>
+            <li>Only encrypted data stored on our servers</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">4.3 Implications</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>You are responsible for password security</li>
+            <li><strong>Lost password = lost data</strong> (we cannot recover your files)</li>
+            <li>We cannot see your file names or content</li>
+            <li>Maximum privacy and security for your recordings</li>
+          </ul>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">5. Data Storage and Security</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">5.1 Data Location</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Primary data center: Zurich, Switzerland</li>
+            <li>Backup data center: Geneva, Switzerland</li>
+            <li><strong>Never stored outside Switzerland</strong></li>
+            <li>Swiss data protection principles apply</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">5.2 Security Measures</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>AES-256-GCM encryption at rest</li>
+            <li>TLS 1.3 encryption in transit</li>
+            <li>24/7 security monitoring</li>
+            <li>Regular security audits and penetration testing</li>
+            <li>Physical security (biometric access, video surveillance)</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">5.3 Backups</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>Triple redundancy (3× copies in separate racks)</li>
+            <li>All backups encrypted</li>
+            <li>Geographic separation (Zurich/Geneva)</li>
+            <li>30-day retention for deleted files (recovery period)</li>
+            <li>Permanent deletion after 30 days</li>
+          </ul>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">6. Data Sharing and Disclosure</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">6.1 No Third-Party Sharing</h3>
+          <p class="text-body text-gray-700 leading-relaxed mb-md"><strong>We do NOT share, sell, or rent your data.</strong> Period.</p>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>No advertising partners</li>
+            <li>No analytics providers</li>
+            <li>No data brokers</li>
+            <li>No third-party access to your files</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">6.2 Service Providers (Limited)</h3>
+          <p class="text-body text-gray-700 leading-relaxed mb-md">We work with minimal service providers:</p>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Payment processing through secure third-party providers</li>
+            <li>Infrastructure provider (Swiss data center)</li>
+            <li>All providers under strict Data Processing Agreements (DPAs)</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">6.3 Legal Requests</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>Only respond to valid Swiss legal process</li>
+            <li>Will fight overly broad requests</li>
+            <li>Will notify you if legally permitted</li>
+            <li><strong>Zero-knowledge means we cannot provide file content</strong></li>
+          </ul>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">7. Your Rights (GDPR & Swiss Data Protection)</h2>
+          <p class="text-body text-gray-700 leading-relaxed mb-lg">You have the following rights regarding your data:</p>
+
+          <h3 class="text-h3 text-gray-900 mb-md">7.1 Right to Access</h3>
+          <p class="text-body text-gray-700 leading-relaxed mb-xl">Request a copy of all your data. Export your files at any time.</p>
+
+          <h3 class="text-h3 text-gray-900 mb-md">7.2 Right to Rectification</h3>
+          <p class="text-body text-gray-700 leading-relaxed mb-xl">Correct inaccurate account information.</p>
+
+          <h3 class="text-h3 text-gray-900 mb-md">7.3 Right to Erasure (Right to be Forgotten)</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Delete your account and all data</li>
+            <li>Permanent deletion within 7 days</li>
+            <li>Purged from all backups within 30 days</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">7.4 Right to Data Portability</h3>
+          <p class="text-body text-gray-700 leading-relaxed mb-xl">Download all your files in standard formats (no proprietary lock-in).</p>
+
+          <h3 class="text-h3 text-gray-900 mb-md">7.5 Right to Restrict Processing</h3>
+          <p class="text-body text-gray-700 leading-relaxed mb-xl">Pause your account (data not deleted, just processing restricted).</p>
+
+          <h3 class="text-h3 text-gray-900 mb-md">7.6 Right to Object</h3>
+          <p class="text-body text-gray-700 leading-relaxed">Object to any data processing. We will comply or explain our legal obligation to continue.</p>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">8. Data Retention</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">8.1 Active Account</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Files: Until you delete them</li>
+            <li>Account info: Until account deletion</li>
+            <li>Logs: 24 hours only (automatically purged)</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">8.2 Deleted Files</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>30-day recovery period</li>
+            <li>Permanent deletion after 30 days</li>
+            <li>Purged from all backups</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">8.3 Closed Account</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>All data deleted within 7 days</li>
+            <li>Permanent, irreversible deletion</li>
+            <li>No "shadow" copies retained</li>
+          </ul>
+        </section>
+
+        <!-- Section 9 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">9. Cookies and Tracking</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">9.1 Cookies We Use</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>Session cookie (login only, deleted on logout)</li>
+            <li><strong>No tracking cookies</strong></li>
+            <li><strong>No advertising cookies</strong></li>
+            <li><strong>No analytics cookies</strong></li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">9.2 Do Not Track</h3>
+          <p class="text-body text-gray-700 leading-relaxed">We respect Do Not Track (DNT) signals. Though we don't track by default anyway.</p>
+        </section>
+
+        <!-- Section 10 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">10. International Transfers</h2>
+
+          <h3 class="text-h3 text-gray-900 mb-md mt-xl">10.1 Data Location</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700 mb-xl">
+            <li>All data stored in Switzerland only</li>
+            <li><strong>Never transferred internationally</strong></li>
+            <li>Swiss privacy laws apply exclusively</li>
+          </ul>
+
+          <h3 class="text-h3 text-gray-900 mb-md">10.2 EU Customers</h3>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>Swiss adequacy decision (GDPR-aligned)</li>
+            <li>Switzerland provides higher privacy standard than EU minimum</li>
+          </ul>
+        </section>
+
+        <!-- Section 11 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">11. Children's Privacy</h2>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>Service not intended for users under 18</li>
+            <li>If under 18, must have parental consent</li>
+            <li>We don't knowingly collect data from minors</li>
+          </ul>
+        </section>
+
+        <!-- Section 12 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">12. Changes to Privacy Policy</h2>
+          <ul class="list-disc pl-xl space-y-sm text-body text-gray-700">
+            <li>We may update this policy as our service evolves</li>
+            <li>Material changes: 30 days notice via email</li>
+            <li>Continued use after changes = acceptance</li>
+            <li>You can always close your account if you disagree</li>
+          </ul>
+        </section>
+
+        <!-- Section 13 -->
+        <section class="mb-3xl">
+          <h2 class="text-h2 text-gray-900 mb-lg">13. Contact Us</h2>
+          <div class="bg-gray-100 p-xl rounded-card">
+            <p class="text-body text-gray-700 mb-md"><strong>Privacy Questions:</strong> privacy@vstorage.ch</p>
+            <p class="text-body text-gray-700 mb-md"><strong>Data Protection Officer:</strong> dpo@vstorage.ch</p>
+            <p class="text-body text-gray-700 mb-lg"><strong>PGP Key:</strong> Available upon request</p>
+
+            <p class="text-body text-gray-700 mb-sm"><strong>Mail:</strong></p>
+            <p class="text-body text-gray-700 mb-sm">VStorage</p>
+            <p class="text-body text-gray-700 mb-sm">Attn: Privacy Department</p>
+            <p class="text-body text-gray-700 mb-lg">Zürich, Switzerland</p>
+
+            <p class="text-body text-gray-700 mb-sm"><strong>Swiss Data Protection Authority:</strong></p>
+            <p class="text-body text-gray-700">Federal Data Protection and Information Commissioner</p>
+            <p class="text-body text-gray-700">www.edoeb.admin.ch</p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="mt-4xl pt-xl border-t border-gray-300 text-center">
+          <p class="text-body text-gray-700">
+            <strong>Last Updated:</strong> January 15, 2025
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

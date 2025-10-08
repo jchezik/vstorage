@@ -1,0 +1,32 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  class?: string;
+}
+
+const { icon, title, description, class: className = '' } = Astro.props;
+---
+
+<div class={`card group hover:border-primary transition-all duration-300 ${className}`}>
+  <div class="flex flex-col items-start space-y-lg">
+    <!-- Icon -->
+    <div class="w-16 h-16 bg-primary-tint rounded-full flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+      <div class="text-2xl group-hover:scale-110 transition-transform duration-300" set:html={icon} />
+    </div>
+
+    <!-- Content -->
+    <div class="space-y-md">
+      <h3 class="text-h4 text-gray-900">{title}</h3>
+      <p class="text-body text-gray-700">{description}</p>
+    </div>
+
+    <!-- Optional Link -->
+    {Astro.slots.has('link') && (
+      <div class="pt-md">
+        <slot name="link" />
+      </div>
+    )}
+  </div>
+</div>

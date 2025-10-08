@@ -1,0 +1,121 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Card from '../components/ui/Card.astro';
+---
+
+<Layout
+  title="Get in Touch"
+  description="Contact VStorage to discuss your audio storage needs. Email us at contact@vstorage.ch"
+>
+  <!-- Page Hero -->
+  <section class="py-3xl bg-gradient-to-b from-white to-gray-100">
+    <div class="container-custom text-center">
+      <h1 class="text-h1 md:text-display text-gray-900 mb-lg">Get in Touch</h1>
+      <p class="text-body-lg text-gray-700 max-w-3xl mx-auto">
+        Discuss your audio storage needs
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Information -->
+  <section class="py-4xl bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-body-lg text-gray-700 mb-3xl text-center">
+          Whether you're an independent producer, recording studio, or label, we'd love to discuss how VStorage can serve your professional workflow.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-xl mb-3xl">
+          <Card class="bg-primary text-white border-none">
+            <h3 class="text-h4 mb-lg">General Inquiries</h3>
+            <p class="text-h5 font-mono mb-md">contact@vstorage.ch</p>
+            <p class="text-body-sm opacity-90">(Please type this email address manually)</p>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-lg">Support for Existing Customers</h3>
+            <p class="text-body font-mono mb-md">support@vstorage.ch</p>
+            <p class="text-body-sm text-gray-700">For technical assistance and account support</p>
+          </Card>
+        </div>
+
+        <Card class="bg-gray-900 text-white border-none mb-3xl">
+          <h3 class="text-h4 mb-lg">Office Location</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+            <div class="text-body-lg space-y-md">
+              <p>Our Zurich headquarters, where we design and develop VStorage's audio storage solutions.</p>
+              <div class="space-y-sm">
+                <p><strong>VStorage</strong></p>
+                <p>Zürich, Switzerland</p>
+              </div>
+            </div>
+            <div class="flex justify-center md:justify-end">
+              <img 
+                src="/images/based-in-switzerland.jpg" 
+                alt="VStorage office location in Switzerland" 
+                class="rounded-lg shadow-lg w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[500px] md:h-[500px] object-cover"
+              />
+            </div>
+          </div>
+        </Card>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-lg">Response Times</h3>
+            <ul class="space-y-md text-body text-gray-700">
+              <li>• Sales inquiries: Within 24 hours</li>
+              <li>• Support requests: Within 48 hours</li>
+              <li>• General questions: Within 48 hours</li>
+            </ul>
+          </Card>
+
+          <Card>
+            <h3 class="text-h4 text-gray-900 mb-lg">What to Include in Your Inquiry</h3>
+            <ul class="space-y-md text-body text-gray-700">
+              <li>• Your use case (producer, studio, label, etc.)</li>
+              <li>• Approximate storage needs</li>
+              <li>• Number of users</li>
+              <li>• Any specific requirements</li>
+              <li>• Timeline for implementation</li>
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Commitment -->
+  <section class="py-4xl bg-gray-100">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <Card class="text-center">
+          <h3 class="text-h3 text-gray-900 mb-lg">We respect your privacy:</h3>
+          <ul class="space-y-md text-body-lg text-gray-700 inline-block text-left">
+            <li>• All inquiries handled confidentially</li>
+            <li>• No spam, ever</li>
+            <li>• No third-party sharing</li>
+            <li>• Secure email encouraged (PGP supported)</li>
+          </ul>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-4xl bg-primary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-h2 mb-lg">Ready to secure your masters?</h2>
+      <p class="text-body-lg mb-2xl max-w-2xl mx-auto">
+        Explore our features or learn more about our Swiss security infrastructure.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-md justify-center">
+        <a href="/features" class="btn-primary !bg-white !text-primary hover:!bg-gray-100">
+          View Features
+        </a>
+        <a href="/security" class="btn-secondary !border-white !text-white hover:!bg-white/10">
+          Security Details
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

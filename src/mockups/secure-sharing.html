@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Sharing Interface - VStorage Mockup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .modal {
+      background: white;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    .modal-header {
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      color: white;
+      padding: 32px;
+    }
+    .modal-header h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .modal-header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .modal-body {
+      padding: 32px;
+    }
+    .file-preview {
+      background: #F7F7F7;
+      border: 1px solid #E7E0EC;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .file-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #6D4AFF 0%, #8B7FFF 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .file-info h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1C1B1F;
+      margin-bottom: 4px;
+    }
+    .file-meta {
+      font-size: 14px;
+      color: #79747E;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1C1B1F;
+    }
+    .toggle {
+      position: relative;
+      width: 48px;
+      height: 28px;
+      background: #6D4AFF;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    .toggle.off {
+      background: #E7E0EC;
+    }
+    .toggle.off::after {
+      transform: translateX(-20px);
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #E7E0EC;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #6D4AFF;
+    }
+    .input-icon {
+      position: relative;
+    }
+    .input-icon input {
+      padding-left: 40px;
+    }
+    .input-icon::before {
+      content: '🔒';
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #79747E;
+      margin-top: 6px;
+    }
+    .quality-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .quality-option {
+      border: 2px solid #E7E0EC;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quality-option:hover {
+      border-color: #6D4AFF;
+    }
+    .quality-option.selected {
+      border-color: #6D4AFF;
+      background: #F5F4FF;
+    }
+    .quality-option .title {
+      font-weight: 600;
+      color: #1C1B1F;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .quality-option .desc {
+      font-size: 12px;
+      color: #79747E;
+    }
+    .link-preview {
+      background: #F7F7F7;
+      border: 2px dashed #E7E0EC;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .link-preview input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #6D4AFF;
+    }
+    .copy-btn {
+      background: #6D4AFF;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .copy-btn:hover {
+      background: #8B7FFF;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+    .btn-primary {
+      background: #6D4AFF;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #8B7FFF;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #E7E0EC;
+      color: #49454F;
+    }
+    .btn-secondary:hover {
+      border-color: #6D4AFF;
+      color: #6D4AFF;
+    }
+  </style>
+</head>
+<body>
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Share Master Recording</h2>
+      <p>Create a secure sharing link with custom permissions</p>
+    </div>
+
+    <div class="modal-body">
+      <div class="file-preview">
+        <div class="file-icon">🎵</div>
+        <div class="file-info">
+          <h3>Album_Master_Final.wav</h3>
+          <div class="file-meta">WAV • 192kHz/24-bit • 485 MB</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <span>Password Protection</span>
+          <div class="toggle"></div>
+        </div>
+        <div class="input-icon">
+          <input type="text" placeholder="Enter a strong password" value="••••••••••••">
+        </div>
+        <div class="hint">PBKDF2 key derivation with 100,000 iterations</div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <span>Expiration Date</span>
+        </div>
+        <input type="date" value="2025-10-15">
+        <div class="hint">Link will automatically deactivate after this date</div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <span>Download Limit</span>
+        </div>
+        <input type="number" value="5" min="1" max="100">
+        <div class="hint">Maximum number of downloads allowed</div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <span>Quality Options</span>
+        </div>
+        <div class="quality-options">
+          <div class="quality-option selected">
+            <div class="title">Full Quality</div>
+            <div class="desc">Original format</div>
+          </div>
+          <div class="quality-option">
+            <div class="title">Preview</div>
+            <div class="desc">320kbps MP3</div>
+          </div>
+          <div class="quality-option">
+            <div class="title">Stream Only</div>
+            <div class="desc">No download</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="link-preview">
+        <input type="text" value="https://vstorage.ch/s/a7k9m3x2w8q5" readonly>
+        <button class="copy-btn">Copy Link</button>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary">Cancel</button>
+        <button class="btn btn-primary">Create Share Link</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
