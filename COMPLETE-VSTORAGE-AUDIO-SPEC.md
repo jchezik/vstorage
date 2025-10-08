@@ -317,7 +317,7 @@ Section Title: Your Masters. Your Control.
 
 Body:
 Every audio file is encrypted with AES-256-GCM before it leaves your device. 
-We use zero-knowledge architecture—we mathematically cannot access your files. 
+We use zero-knowledge architecture concept — designed so even we could not access your files. 
 Concept modeled on secure Swiss data-center standards, protected by the world's 
 strongest privacy laws.
 
@@ -618,7 +618,7 @@ Server-Side (At Rest):
 
 Zero-Knowledge Architecture:
 • Server never sees unencrypted data
-• We mathematically cannot access your files
+• Designed so even we could not access your files
 • Even under legal pressure, no decryption possible
 • Only you hold decryption keys
 
@@ -1008,7 +1008,7 @@ Custom Solutions:
 **Page Hero:**
 ```
 Title: Your Masters. Protected.
-Subtitle: Military-grade security for professional audio
+Subtitle: Enterprise-grade security for professional audio
 ```
 
 **Main Content:**
@@ -1016,7 +1016,7 @@ Subtitle: Military-grade security for professional audio
 Section 1: Zero-Knowledge Encryption
 
 What it means:
-Zero-knowledge architecture means we mathematically cannot access your files. 
+Zero-knowledge architecture concept — designed so even we could not access your files. 
 Every audio file is encrypted on your device before upload, using AES-256-GCM 
 encryption. We never see your unencrypted data—we only store encrypted bytes.
 
@@ -1059,7 +1059,7 @@ Why AES-256-GCM:
 
 ---
 
-Section 2: Swiss Data Residency
+Section 2: Swiss Data Residency Principles
 
 Why Switzerland:
 Switzerland has the strongest privacy laws in the world and is not subject to 
@@ -1067,7 +1067,7 @@ EU or US jurisdiction. Swiss data sovereignty means your data is protected by
 Swiss Federal Data Protection Act (FADP), which provides stronger privacy 
 protections than GDPR.
 
-Swiss Privacy Advantages:
+Swiss privacy advantages — principles that inspire our design:
 • Not subject to CLOUD Act (US)
 • Not subject to EU data retention directives
 • No mandatory data handover to foreign governments
