@@ -588,7 +588,7 @@ Technical Details:
 **Feature 5: Swiss Data Security**
 ```
 Title: Swiss Privacy for Your Masters
-Subtitle: Military-grade security in Switzerland
+Subtitle: Enterprise-grade encryption and privacy — designed to Swiss security standards
 
 Full Description:
 Your recordings are stored in secure Swiss data centers with military-grade 
