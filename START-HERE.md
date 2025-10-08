@@ -77,7 +77,7 @@ You're building a **professional lossless audio storage platform** for musicians
 7. Collaboration Dashboard (team members)
 8. Storage Dashboard (usage stats)
 9. Upload Interface (drag & drop, progress)
-10. Swiss Data Center Security View
+10. Infrastructure Security View
 
 **Design:**
 - Light theme (Protonmail-style)

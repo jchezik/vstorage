@@ -591,7 +591,7 @@ Title: Swiss Privacy for Your Masters
 Subtitle: Enterprise-grade encryption and privacy — designed to Swiss security standards
 
 Full Description:
-Your recordings are stored in secure Swiss data centers with military-grade 
+Designed around Swiss data protection and hosting principles with 
 encryption. Protected by Swiss privacy laws—the world's strongest.
 
 Security Architecture:
@@ -792,7 +792,7 @@ Technical Implementation:
 **Feature 8: Mobile & Cross-Platform Access**
 ```
 Title: Access from Anywhere
-Subtitle: Native apps for iOS, Android, and web
+Subtitle: Designed for cross-platform access (iOS and Android)
 
 Full Description:
 Access your masters from the studio, home, or on the road. Native mobile apps 
@@ -1429,7 +1429,7 @@ Core Features:
 ✓ Mobile apps (iOS, Android)
 ✓ Web access
 ✓ Triple redundancy
-✓ Automated backups
+✓ Designed for automated backups
 ✓ 99.9% uptime SLA
 
 No Hidden Fees:
@@ -2003,7 +2003,7 @@ Design notes:
 - Fast transfer emphasis
 ```
 
-Mockup 10: Swiss Data Center Security Dashboard
+Mockup 10: Infrastructure Security Dashboard
 ```
 Components to show:
 - Map of Switzerland (data center location marked)

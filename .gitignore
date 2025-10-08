@@ -146,3 +146,4 @@ vite.config.ts.timestamp-*
 
 # JetBrains setting folder
 .idea/
+.vercel
