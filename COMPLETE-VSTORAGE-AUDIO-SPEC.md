@@ -258,7 +258,7 @@ Activity logging:
 
 **Hero Section:**
 ```
-Eyebrow: SWISS-ENGINEERED AUDIO SECURITY
+Eyebrow: ENGINEERED WITH SWISS-LEVEL PRECISION
 
 Headline: 
 Lossless Audio Storage for Musicians
@@ -266,7 +266,7 @@ Lossless Audio Storage for Musicians
 Subheadline:
 Professional-grade cloud storage built specifically for audio. Store your masters 
 in WAV, FLAC, and Apple Lossless formats with military-grade AES-256 encryption. 
-Protected by Swiss data sovereignty.
+Designed around Swiss data-sovereignty standards.
 
 CTA Button: Contact for Pricing
 Secondary CTA: View Audio Features
@@ -288,7 +288,7 @@ Secondary CTA: View Audio Features
 
 4. 🇨🇭 Swiss Privacy Protection
    Your masters protected by Swiss Federal Data Protection Act
-   No activity logging, ever
+   Designed with a no-activity-logging philosophy
 ```
 
 **Key Features Section:**
@@ -318,7 +318,7 @@ Section Title: Your Masters. Your Control.
 Body:
 Every audio file is encrypted with AES-256-GCM before it leaves your device. 
 We use zero-knowledge architecture—we mathematically cannot access your files. 
-Your masters are stored in Swiss data centers, protected by the world's 
+Concept modeled on secure Swiss data-center standards, protected by the world's 
 strongest privacy laws.
 
 We don't log your listening activity. We don't track downloads. We don't 
@@ -329,7 +329,7 @@ Technical Details:
 ✓ AES-256-GCM client-side encryption
 ✓ Zero-knowledge architecture (server-blind storage)
 ✓ TLS 1.3 with Perfect Forward Secrecy
-✓ Swiss data residency (Zurich facility)
+✓ Designed around Swiss data-sovereignty standards
 ✓ Triple redundancy, 99.999999999% durability
 ✓ ISO 27001-aligned infrastructure
 ✓ No activity logging policy
